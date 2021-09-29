@@ -1,5 +1,6 @@
 from methods import readCSV
 from flask import Flask
+from sqlalchemy.sql import text
 
 import csv
 import json
@@ -8,13 +9,15 @@ from sqlalchemy import create_engine
 
 app = Flask(__name__)
 
-engine = create_engine('postgresql://postgres:contra@localhost:5432/example_db')
+engine = create_engine('postgresql://postgres:contra@localhost:5432/blackbuster')
 
 
 @app.route('/')
 def primercomandito():  
-    
-    #app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:contra@localhost:5432/example_db"
+    infos = []
+    infos = readCSV()
+    print(infos[89470])
+    #app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:contra@localhost:5432/blackbuster"
 
     return 'Bienvenido al inicio'
 
@@ -82,9 +85,10 @@ def eliminarER():
 def cargartemp():
     infos = []
     infos = readCSV()
-    json_info = json.dumps(infos)
+    
 
-    return json_info
+    
+    return 'holis'
 
 @app.route('/cargarModelo')
 def cargarER():
