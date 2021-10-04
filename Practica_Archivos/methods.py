@@ -8,7 +8,7 @@ comitaso = engine.execution_options(isolation_level="AUTOCOMMIT")
 
 
 def readCSV():
-	statement = text("""create table "unique".Temporal (
+	statement = text("""create table if not exists "unique".Temporal (
  	NOMBRE_CLIENTE text,
  	CORREO_CLIENTE text,
  	CLIENTE_ACTIVO text,
